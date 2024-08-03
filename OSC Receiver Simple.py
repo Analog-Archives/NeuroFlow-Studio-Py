@@ -1,8 +1,3 @@
-"""
-Mind Monitor - Minimal EEG OSC Receiver
-Coded: James Clutterbuck (2021)
-Requires: pip install python-osc
-"""
 from datetime import datetime
 from pythonosc import dispatcher
 from pythonosc import osc_server
