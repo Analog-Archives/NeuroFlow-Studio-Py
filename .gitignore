@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 docs
 backup
+config
 
 # C extensions
 *.so
