@@ -26,7 +26,7 @@ eeg_data = {
             '_accelerometer_readings': {},
             '_is_blink_detected': False}
 
-_default_values_1 = {'TP9': 0.0, 'AF7': 0.0, 'AF8': 0.0, 'AF10': 0.0}
+_default_values_1 = {'TP9': 0.0, 'AF7': 0.0, 'AF8': 0.0, 'TP10': 0.0}
 _default_values_2 = {'X': 0.0, 'Y': 0.0, 'Z': 0.0}
 
 # array option
@@ -43,35 +43,35 @@ def alpha_absolute_eeg_handler(address: int,*args):
     _alpha_readings['TP9'] = args[0]
     _alpha_readings['AF7'] = args[1]
     _alpha_readings['AF8'] = args[2]
-    _alpha_readings['AF10'] = args[3]
+    _alpha_readings['TP10'] = args[3]
     # print(_alpha_readings)
 
 def beta_absolute_eeg_handler(address: int,*args):
     _beta_readings['TP9'] = args[0]
     _beta_readings['AF7'] = args[1]
     _beta_readings['AF8'] = args[2]
-    _beta_readings['AF10'] = args[3]
+    _beta_readings['TP10'] = args[3]
     # print(_beta_readings)
 
 def delta_absolute_eeg_handler(address: int,*args):
     _delta_readings['TP9'] = args[0]
     _delta_readings['AF7'] = args[1]
     _delta_readings['AF8'] = args[2]
-    _delta_readings['AF10'] = args[3]
+    _delta_readings['TP10'] = args[3]
     # print(_delta_readings)
 
 def gamma_absolute_eeg_handler(address: int,*args):
     _gamma_readings['TP9'] = args[0]
     _gamma_readings['AF7'] = args[1]
     _gamma_readings['AF8'] = args[2]
-    _gamma_readings['AF10'] = args[3]
+    _gamma_readings['TP10'] = args[3]
     # print(_gamma_readings)
 
 def theta_absolute_eeg_handler(address: int,*args):
     _theta_readings['TP9'] = args[0]
     _theta_readings['AF7'] = args[1]
     _theta_readings['AF8'] = args[2]
-    _theta_readings['AF10'] = args[3]
+    _theta_readings['TP10'] = args[3]
     # print(_theta_readings)
 
 def gyroscope_values_handler(address: int,*args):
@@ -83,6 +83,8 @@ def accelerometer_values_handler(address: int,*args):
     _accelerometer_readings['X'] = args[0]
     _accelerometer_readings['Y'] = args[1]
     _accelerometer_readings['Z'] = args[2]
+    # print(args[1])
+        
 
 def blink_detection_handler (address: str,*args):
     if args[0] == 1:
