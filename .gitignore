@@ -5,6 +5,10 @@ __pycache__/
 docs
 backup
 config
+exports#
+cache
+exports
+test
 
 # C extensions
 *.so
