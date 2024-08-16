@@ -10,6 +10,12 @@ from tinydb import TinyDB
 def get_answers(question):
     # chat history update
     db = TinyDB('model/chat_db/df_chat_history.json')
+
+    if len(db.all()) == 0:
+        db.insert({
+            'role': 'system', 
+            'content': "You are a helpful AI assistant and when generating answers always refer to the chat history and only give the answer for the last question asked"})
+            
     db.insert({'role': 'user', 'content': str(question)})
 
     llm = ChatGroq(
@@ -17,12 +23,12 @@ def get_answers(question):
             os.environ.get("MODEL_NAME"), 
             api_key = os.getenv("GROQ_API_KEY"))
 
+    # access local data file
     df = pd.read_csv('test/data.csv')
     df = SmartDataframe(df, config={"llm": llm})
 
-    instructions = "Don't generate any charts, just give the answer in a string format"
-
-    answer = df.chat(question + instructions)
+    # answer = df.chat(question)
+    answer = df.chat(question)
     
     # chat history update 
     db.insert({'role': 'assistant', 'content': str(answer)})

@@ -9,20 +9,13 @@ client = Groq(
 
 def get_ai_response(question):
     db = TinyDB('model/chat_db/ai_assistant_chat_history.json')
-    db.insert({'role': "system", 'content': "you are a helpful assistant. Generate short and brief professional answers with less that 30 words."})
+
+    if len(db.all()) == 0:
+        db.insert({'role': "system", 'content': "you are a helpful assistant. Generate short and brief professional answers with less that 30 words."})
+        
     db.insert({'role': "user", 'content': str(question)})
 
     chat_completion = client.chat.completions.create(
-        # messages=[
-        #     {
-        #         "role": "system",
-        #         "content": "you are a helpful assistant. Generate short and brief professional answers with less that 30 words."
-        #     },
-        #     {
-        #         "role": "user",
-        #         "content": "Explain the importance of fast language models",
-        #     }
-        # ],
         messages = db.all(),
         model=os.environ.get("MODEL_NAME"),
     )
