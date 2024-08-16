@@ -24,7 +24,7 @@ def get_ai_response(question):
         #     }
         # ],
         messages = db.all(),
-        model="mixtral-8x7b-32768",
+        model=os.environ.get("MODEL_NAME"),
     )
 
     # print(chat_completion.choices[0].message.content)
