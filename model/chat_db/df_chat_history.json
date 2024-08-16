@@ -1,20 +1,104 @@
 {
     "_default": {
         "1": {
-            "role": "user",
-            "content": "First column name ?"
+            "role": "system",
+            "content": "You are a helpful data science assistant who knows almost everything about datasets"
         },
         "2": {
-            "role": "assistant",
-            "content": "TimeStamp"
+            "role": "user",
+            "content": "What is the lowest value in the Battery column ?"
         },
         "3": {
-            "role": "user",
-            "content": "Last column name ?"
+            "role": "assistant",
+            "content": "The lowest value in the Battery column is 70.0."
         },
         "4": {
+            "role": "user",
+            "content": "Who are you ?"
+        },
+        "5": {
             "role": "assistant",
-            "content": "Elements"
+            "content": "The device or system is /muse/event/connected Muse-F23A."
+        },
+        "6": {
+            "role": "user",
+            "content": "What is the highest value in the Battery column"
+        },
+        "7": {
+            "role": "assistant",
+            "content": "The highest value in the Battery column is 70.0."
+        },
+        "8": {
+            "role": "user",
+            "content": "What you can say about the battery column when you are inspecting the values"
+        },
+        "9": {
+            "role": "assistant",
+            "content": "Battery column: min=70.0, max=70.0, mean=70.0, std=0.0"
+        },
+        "10": {
+            "role": "user",
+            "content": "What is the average value in the Battery column"
+        },
+        "11": {
+            "role": "assistant",
+            "content": "The average value in the Battery column is 70.0."
+        },
+        "12": {
+            "role": "user",
+            "content": "Why's the mean of the Battery column is 70.0"
+        },
+        "13": {
+            "role": "assistant",
+            "content": "The mean of the Battery column is 70.0."
+        },
+        "14": {
+            "role": "user",
+            "content": "How to get the avetage of he Battery column"
+        },
+        "15": {
+            "role": "assistant",
+            "content": "The average battery level is 70.00."
+        },
+        "16": {
+            "role": "user",
+            "content": "What you can tell about the values in HSI_TP9 column"
+        },
+        "17": {
+            "role": "assistant",
+            "content": "The values in HSI_TP9 column have a mean of 1.10, a median of 1.00, a minimum of 1.00, and a maximum of 2.00."
+        },
+        "18": {
+            "role": "user",
+            "content": "What does HSI_TP9 stand for"
+        },
+        "19": {
+            "role": "assistant",
+            "content": "HSI_TP9 likely stands for Headband Sensor Index for the TP9 electrode."
+        },
+        "20": {
+            "role": "user",
+            "content": "Difference between the HSI_TP9 and the Beta_TP9 electrode in EEG Records"
+        },
+        "21": {
+            "role": "assistant",
+            "content": "The difference between the HSI_TP9 and the Beta_TP9 electrode in EEG Records is 0.48."
+        },
+        "22": {
+            "role": "user",
+            "content": "General difference between HSI_TP9 and the Beta_TP9 electrodes"
+        },
+        "23": {
+            "role": "assistant",
+            "content": "The general difference between HSI_TP9 and Beta_TP9 electrodes is 0.480916349947675."
+        },
+        "24": {
+            "role": "user",
+            "content": "General difference between HSI_TP9 and the Beta_TP9 electrodes in EEG industry"
+        },
+        "25": {
+            "role": "assistant",
+            "content": "The general difference between HSI_TP9 and Beta_TP9 electrodes in EEG industry is 0.48."
         }
     }
 }
