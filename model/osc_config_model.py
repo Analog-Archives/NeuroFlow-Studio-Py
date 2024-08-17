@@ -9,7 +9,9 @@ import json
 from dotenv import load_dotenv, dotenv_values 
 load_dotenv() 
 from tinydb import TinyDB, Query
-
+import random
+from pythonosc import udp_client
+from pythonosc.osc_message_builder import OscMessageBuilder
 
 # env values
 ip = os.getenv("IP_ADDRESS")
@@ -92,12 +94,37 @@ def blink_detection_handler (address: str,*args):
         # global _is_blink_detected
         # _is_blink_detected = True
 
-async def send_data(websocket, path):
+# Initialize OSC client
+# Configuration
+target_ip = "192.168.1.208"  # Replace with your target IP address
+target_port = 5001       # Replace with your target port number
+osc_address = "/example" # OSC address pattern
+client = udp_client.SimpleUDPClient(target_ip, target_port)
+from osc_server_model import control_server
+async def send_data(websocket, path):    
     # initial values
     while True:
         if True:
+            db = TinyDB('data/data_layer.json')
+            db.truncate()
+            db.insert({ 'data': eeg_data })
+
+            # print(db.all()[0]['data']['_gyroscope_readings'])
+            
             await websocket.send(json.dumps(eeg_data))
             eeg_data['_is_blink_detected'] = False
+            # OSC out
+            # msg_builder = OscMessageBuilder(address=osc_address)
+            # msg_builder.add_arg(random.randint(0, 100))  # Random integer
+            # msg_builder.add_arg(random.uniform(0, 10))   # Random float
+            # msg_builder.add_arg(random.choice(["A", "B", "C"]))  # Random string from list
+            # msg_builder.add_arg(random.choice([True, False]))    # Random boolean
+            # msg_builder.add_arg([random.randint(0, 10) for _ in range(3)])  # Random list of integers
+
+            # msg = msg_builder.build()
+            # client.send(msg)
+
+            control_server(db.all()[0]['data'])
         await asyncio.sleep(0.1)
 
 if __name__ == "__main__":    
@@ -114,7 +141,7 @@ if __name__ == "__main__":
 
     server = osc_server.ThreadingOSCUDPServer((ip, port), dispatcher)
     print("Listening on UDP port "+str(port))
-
+    
     # websocket
     start_web_socket_server = websockets.serve(send_data, "localhost", 6789)
     
