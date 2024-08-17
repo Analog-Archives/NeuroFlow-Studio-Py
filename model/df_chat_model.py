@@ -7,27 +7,30 @@ load_dotenv()
 import os
 from tinydb import TinyDB
 
-# db = TinyDB('model/chat_db/df_chat_history.json')  
+def get_answers(question):
+    # chat history update
+    db = TinyDB('model/chat_db/df_chat_history.json')
 
-def get_answers(question): 
-    # global db 
-    # db.insert = ({
-    #     'role': 'user',
-    #     'content': str(question)
-    # })
+    if len(db.all()) == 0:
+        db.insert({
+            'role': 'system', 
+            'content': "You are a helpful AI assistant and when generating answers always refer to the chat history and only give the answer for the last question asked"})
+            
+    db.insert({'role': 'user', 'content': str(question)})
 
     llm = ChatGroq(
-        model_name="llama-3.1-70b-versatile", api_key = os.getenv("GROQ_API_KEY"))
+        model_name = 
+            os.environ.get("MODEL_NAME"), 
+            api_key = os.getenv("GROQ_API_KEY"))
 
+    # access local data file
     df = pd.read_csv('test/data.csv')
     df = SmartDataframe(df, config={"llm": llm})
-    answer = df.chat(question) 
+
+    # answer = df.chat(question)
+    answer = df.chat(question)
     
-    # db.insert = ({
-    #     'role': 'assistant',
-    #     'content': str(answer)
-    # })
+    # chat history update 
+    db.insert({'role': 'assistant', 'content': str(answer)})
 
     return str(answer)
-
-# get_answers()
