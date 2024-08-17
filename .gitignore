@@ -9,6 +9,7 @@ exports#
 cache
 exports
 test
+chat_db
 
 # C extensions
 *.so
