@@ -13,7 +13,7 @@ osc_address = "/example" # OSC address pattern
 client = udp_client.SimpleUDPClient(target_ip, target_port)
 
 def control_server(data):
-    print(data['_gyroscope_readings']['X'])
+    # print(data['_gyroscope_readings']['X'])
     # while True:
         # Create and send an OSC message
     msg_builder = OscMessageBuilder(address=osc_address)
